@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboard"
+        android:title="Dashboard"
+        android:iconTint="@color/blue"
+        android:icon="@drawable/dashboard_24px"/>
+
+    <item
+        android:id="@+id/employees"
+        android:title="Employees"
+        android:iconTint="@color/blue"
+        android:icon="@drawable/groups_24px"/>
+
+    <item
+        android:id="@+id/fab"
+        android:title="" />
+
+    <item
+        android:id="@+id/payroll"
+        android:title="Payroll"
+        android:iconTint="@color/blue"
+        android:icon="@drawable/payments_24px"/>
+
+    <item
+        android:id="@+id/account"
+        android:title="Account"
+        android:iconTint="@color/blue"
+        android:icon="@drawable/account_circle_24px"/>
+
+</menu>
