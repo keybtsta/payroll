@@ -36,7 +36,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@android:drawable/btn_star" />
+                android:src="@drawable/add_photo_alternate_24px" />
 
             <TextView
                 android:id="@+id/textView4"
