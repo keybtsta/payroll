@@ -74,6 +74,13 @@
                 android:layout_marginTop="8dp"
                 android:inputType="text" />
 
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Employee Type" />
+
             <Spinner
                 android:id="@+id/spinnerEmpType"
                 android:layout_marginTop="20dp"
@@ -81,11 +88,19 @@
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/btnAdd"
+                android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Add" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/grey"
+                android:text="Cancel" />
         </LinearLayout>
 
     </LinearLayout>
