@@ -4,6 +4,8 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorAccent">@color/blue</item>
+
     </style>
 
     <style name="Theme.PMS_APP" parent="Base.Theme.PMS_APP" />

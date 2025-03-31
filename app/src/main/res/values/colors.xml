@@ -7,4 +7,6 @@
     <color name="green">#378A31</color>
     <color name="orange">#FF5722</color>
     <color name="teal">#009688</color>
+    <color name="bottom_nav_selected">#3F51B5</color>
+    <color name="bottom_nav_unselected">#959597</color>
 </resources>

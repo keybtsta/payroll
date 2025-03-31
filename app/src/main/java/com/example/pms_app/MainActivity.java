@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.frame_layout, selectedFragment);
+                    transaction.replace(R.id.fragmentContainer, selectedFragment);
                     transaction.commit();
                 }
 

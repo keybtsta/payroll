@@ -4,22 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
+        android:name="com.example.pms_app.DashboardFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottomAppBar"
+            android:background="@color/white"
             app:fabAlignmentMode="center"
+            app:backgroundTint="@color/white"
             app:fabAnchorMode="cradle"
             app:fabCradleMargin="14dp"
             app:fabCradleVerticalOffset="16dp"
@@ -30,10 +35,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/bottomNavigation"
                 android:layout_marginEnd="12dp"
-                app:backgroundTint="@color/white"
-                android:background="@android:color/transparent"
+                android:background="@color/white"
                 app:menu="@menu/bottom_nav_menu"
                 app:labelVisibilityMode="labeled"
+                app:itemBackground="@android:color/transparent"
+                app:itemIconTint="@color/bottom_nav_item_color"
+                app:itemTextColor="@color/bottom_nav_item_color"
                 android:elevation="0dp"/>
 
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -43,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add_24px"
+            android:backgroundTint="@color/white"
+            app:backgroundTint="@color/blue"
             app:layout_anchor="@id/bottomAppBar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
