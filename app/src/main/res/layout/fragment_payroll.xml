@@ -257,7 +257,7 @@
                         android:textSize="12dp" />
 
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/textViewEmployeeCount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"

@@ -52,7 +52,7 @@
                         app:tint="@color/blue" />
 
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/textViewEmployeeCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -120,7 +120,7 @@
                         app:tint="@color/green" />
 
                     <TextView
-                        android:id="@+id/textView144"
+                        android:id="@+id/textViewTotalExpense"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -188,7 +188,7 @@
                         app:tint="@color/orange" />
 
                     <TextView
-                        android:id="@+id/textView124"
+                        android:id="@+id/textViewPending"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -256,7 +256,7 @@
                         app:tint="@color/teal" />
 
                     <TextView
-                        android:id="@+id/textView142"
+                        android:id="@+id/textViewProcessedPayroll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
