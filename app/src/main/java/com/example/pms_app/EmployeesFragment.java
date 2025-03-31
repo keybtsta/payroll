@@ -4,13 +4,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,6 +29,7 @@ public class EmployeesFragment extends Fragment {
 
     RecyclerView rvEmployees;
     MainAdapter mainAdapter;
+    SearchView etSearch;
 
     public EmployeesFragment() {
         // Required empty public constructor
@@ -66,6 +71,36 @@ public class EmployeesFragment extends Fragment {
         // Setting Adapter
         mainAdapter = new MainAdapter(options);
         rvEmployees.setAdapter(mainAdapter);
+
+        etSearch = view.findViewById(R.id.etSearch);
+
+        etSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                FirebaseRecyclerOptions<MainModel> options =
+                        new FirebaseRecyclerOptions.Builder<MainModel>()
+                                .setQuery(FirebaseDatabase.getInstance().getReference().child("database").child("employees").orderByChild("name").startAt(query).endAt(query + "~"), MainModel.class)
+                                .build();
+
+                mainAdapter = new MainAdapter(options);
+                rvEmployees.setAdapter(mainAdapter);
+                mainAdapter.startListening();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                FirebaseRecyclerOptions<MainModel> options =
+                        new FirebaseRecyclerOptions.Builder<MainModel>()
+                                .setQuery(FirebaseDatabase.getInstance().getReference().child("database").child("employees").orderByChild("name").startAt(query).endAt(query + "~"), MainModel.class)
+                                .build();
+
+                mainAdapter = new MainAdapter(options);
+                rvEmployees.setAdapter(mainAdapter);
+                mainAdapter.startListening();
+                return false;
+            }
+        });
     }
 
     @Override

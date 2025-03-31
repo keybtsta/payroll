@@ -26,7 +26,7 @@ public class AddActivity extends AppCompatActivity {
         EditText etID = findViewById(R.id.etID);
         EditText etName = findViewById(R.id.etName);
         Spinner spinnerEmpType = findViewById(R.id.spinnerEmpType);
-        Button btnAdd = findViewById(R.id.btnAdd);
+        Button btnAdd = findViewById(R.id.btnUpdate);
         Button btnCancel = findViewById(R.id.btnCancel);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

@@ -1,7 +1,9 @@
 package com.example.pms_app;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +18,21 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.
         holder.name.setText(model.getName());
         holder.employeeID.setText(model.getEmployeeID());
         holder.employeeType.setText(model.getEmployeeType());
+
+        holder.btnManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), EditActivity.class);
+
+                intent.putExtra("name", model.getName());
+                intent.putExtra("employeeId", model.getEmployeeID());
+                intent.putExtra("employeeType", model.getEmployeeType());
+
+                intent.putExtra("id", getRef(position).getKey());
+
+                v.getContext().startActivity(intent);
+            }
+        });
     }
     @NonNull
     @Override
@@ -26,8 +43,10 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.
     public class myViewHolder extends RecyclerView.ViewHolder {
         // Declaration
         TextView name, employeeID, employeeType;
+        Button btnManage;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            btnManage = itemView.findViewById(R.id.btnManage);
             name = itemView.findViewById(R.id.textName);
             employeeID = itemView.findViewById(R.id.textEmployeeID);
             employeeType = itemView.findViewById(R.id.textEmployeeType);

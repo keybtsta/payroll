@@ -76,7 +76,7 @@
 
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -85,7 +85,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textEmployeeID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Emp ID: ######" />
@@ -98,7 +98,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/textEmployeeType"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="40dp"
@@ -131,8 +131,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:text="Total Work Days in a Month "
                     android:textSize="16sp"
-                    android:text="Total Work Days in a Month " />
+                    android:visibility="visible" />
 
             </LinearLayout>
 
@@ -156,11 +157,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:padding="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_1"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:textSize="16sp"
-                    android:inputType="number" />
+                    android:visibility="visible" />
 
             </LinearLayout>
 
@@ -188,7 +190,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/textView113"

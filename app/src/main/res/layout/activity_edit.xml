@@ -21,8 +21,8 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:title="Add Employee"
-            app:titleTextColor="@color/white"/>
+            app:title="Edit Employee"
+            app:titleTextColor="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,12 +87,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:text="Update" />
+
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#F44336"
+                    android:text="Delete" />
+            </LinearLayout>
+
             <Button
-                android:id="@+id/btnUpdate"
+                android:id="@+id/btnPayroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Add" />
+                android:backgroundTint="@color/green"
+                android:text="Payroll" />
 
             <Button
                 android:id="@+id/btnCancel"
