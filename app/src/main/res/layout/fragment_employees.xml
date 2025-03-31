@@ -111,23 +111,12 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEmployees"
         android:layout_width="match_parent"
-        android:layout_height="416dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/edit_text"
-        android:elevation="4dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvEmployees"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
