@@ -40,8 +40,7 @@
         android:id="@+id/rvEmployees"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:paddingBottom="100dp">
+        android:paddingBottom="80dp">
 
 
     </androidx.recyclerview.widget.RecyclerView>

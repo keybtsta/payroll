@@ -1,10 +1,15 @@
 package com.example.pms_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     FloatingActionButton fabAdd;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         fabAdd = findViewById(R.id.fabAdd);
 
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentContainerView);
+
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,37 +48,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                Fragment selectedFragment = null;
-
-                if(item.getItemId() == R.id.dashboard){
-                    selectedFragment = new DashboardFragment();
-                }
-                else if(item.getItemId() == R.id.employees){
-                    selectedFragment = new EmployeesFragment();
-                }
-                else if(item.getItemId() == R.id.payroll){
-                    selectedFragment = new PayrollFragment();
-                }
-                else if(item.getItemId() == R.id.account){
-                    selectedFragment = new AccountFragment();
-                }
-
-                if (selectedFragment != null) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.fragmentContainer, selectedFragment);
-                    transaction.commit();
-                }
 
 
-                return true;
-            }
-        });
+            NavController navController = navHostFragment.getNavController();
+            NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.hasExtra("employeeName")) {
+
+
+            // Extract data
+            String employeeName = intent.getStringExtra("employeeName");
+            // Perform navigation using NavController
+            NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+            navController.navigate(R.id.payrollFragment);  // Navigate as needed
+        }
+    }
+
 }

@@ -20,23 +20,6 @@
         app:title="Payroll"
         app:titleTextColor="@color/white" />
 
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:ems="10"
-        android:inputType="text"
-        android:background="@drawable/edit_text"
-        android:drawableLeft="@drawable/search_24px"
-        android:drawablePadding="10dp"
-        android:drawableTint="@color/grey"
-        android:padding="10dp"
-        android:elevation="4dp"
-        android:hint="Search" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,6 +32,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/EmployeeInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -109,6 +93,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/Calculator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -123,8 +108,8 @@
                     android:id="@+id/textView62343"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Work Hours per Day" />
+                    android:text="Work Hours per Day"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -143,17 +128,17 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editTextText"
+                    android:id="@+id/etWork"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="10dp"
                     android:background="@drawable/edit_text_1"
-                    android:textSize="16sp"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editTextText2"
+                    android:id="@+id/etTotalWork"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -169,6 +154,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ComputeButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
@@ -186,11 +172,64 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/PartTime"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView113"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:text="Salary Breakdown"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:text="Net Salary"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvNetSalary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="###"
+                    android:textAlignment="textEnd" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/FullTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/textView113"
@@ -219,7 +258,7 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tvSalaryRate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
@@ -291,7 +330,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/tvInsurance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -300,7 +339,7 @@
                         android:textSize="12dp" />
 
                     <TextView
-                        android:id="@+id/textView17"
+                        android:id="@+id/tvSSS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -309,7 +348,7 @@
                         android:textSize="12dp" />
 
                     <TextView
-                        android:id="@+id/textView18"
+                        android:id="@+id/tvHousing"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -318,7 +357,7 @@
                         android:textSize="12dp" />
 
                     <TextView
-                        android:id="@+id/textView204"
+                        android:id="@+id/tvTax"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0"

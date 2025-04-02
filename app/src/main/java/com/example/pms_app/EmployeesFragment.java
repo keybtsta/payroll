@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,11 +22,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EmployeesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class EmployeesFragment extends Fragment {
 
     RecyclerView rvEmployees;
@@ -56,6 +54,8 @@ public class EmployeesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
 
         // Initialization
         rvEmployees = view.findViewById(R.id.rvEmployees);

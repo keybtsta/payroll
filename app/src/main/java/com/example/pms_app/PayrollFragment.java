@@ -1,23 +1,49 @@
 package com.example.pms_app;
 
+import android.app.BroadcastOptions;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavArgs;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class PayrollFragment extends Fragment {
 
-    EditText etSearch;
+    TextView textName;
+    TextView textEmployeeID;
+    TextView textEmployeeType;
+    EditText etWork;
+    EditText etTotalWork;
+    TextView tvNetSalary;
+    TextView tvSalaryRate;
+    TextView tvInsurance;
+    TextView tvSSS;
+    TextView tvHousing;
+    TextView tvTax;
+
+    LinearLayout PartTime;
+    LinearLayout FullTime;
 
     public PayrollFragment() {
         // Required empty public constructor
@@ -31,6 +57,7 @@ public class PayrollFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -44,24 +71,13 @@ public class PayrollFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        etSearch = view.findViewById(R.id.etSearch);
+        PayrollFragmentArgs args = PayrollFragmentArgs.fromBundle(getArguments());
 
-        etSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        String name = args.getName();
+        String employeeID = args.getEmployeeID();
+        String employeeType = args.getEmployeeType();
+        String id = args.getId();
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                FirebaseDatabase.getInstance().getReference().child("database").child("employees").orderByChild("name");
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        Log.d("PayrollFragment", "Received: " + name + ", " + employeeID + ", " + employeeType + ", " + id);
     }
 }

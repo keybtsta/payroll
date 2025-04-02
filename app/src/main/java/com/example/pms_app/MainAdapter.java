@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.myViewHolder> {
     public MainAdapter(@NonNull FirebaseRecyclerOptions<MainModel> options) {
         super(options);
@@ -27,8 +28,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.
                 intent.putExtra("name", model.getName());
                 intent.putExtra("employeeId", model.getEmployeeID());
                 intent.putExtra("employeeType", model.getEmployeeType());
-
-                intent.putExtra("id", getRef(position).getKey());
+                intent.putExtra("id", getRef(holder.getBindingAdapterPosition()).getKey());
 
                 v.getContext().startActivity(intent);
             }
