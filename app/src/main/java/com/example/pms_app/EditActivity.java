@@ -9,7 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -106,10 +109,15 @@ public class EditActivity extends AppCompatActivity {
         btnPayroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedpreferences = getSharedPreferences("query", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString("query", employeeId);
+                editor.apply();
 
-                Intent intent = new Intent(EditActivity.this, MainActivity.class);
-                intent.putExtra("employeeName", "John Doe"); // Pass data if needed
-                startActivity(intent);
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("fragmentToLoad", "payroll"); // Change this as needed
+                setResult(Activity.RESULT_OK, resultIntent);
+                finish();
             }
         });
 

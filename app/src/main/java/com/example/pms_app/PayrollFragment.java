@@ -1,7 +1,9 @@
 package com.example.pms_app;
 
 import android.app.BroadcastOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,8 +45,12 @@ public class PayrollFragment extends Fragment {
     TextView tvHousing;
     TextView tvTax;
 
+    Button btnCompute;
+
     LinearLayout PartTime;
     LinearLayout FullTime;
+
+    String employmentType;
 
     public PayrollFragment() {
         // Required empty public constructor
@@ -70,14 +77,43 @@ public class PayrollFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        textName = view.findViewById(R.id.textName);
+        textEmployeeID = view.findViewById(R.id.textEmployeeID);
+        textEmployeeType = view.findViewById(R.id.textEmployeeType);
 
-        PayrollFragmentArgs args = PayrollFragmentArgs.fromBundle(getArguments());
+        btnCompute = view.findViewById(R.id.btnCompute);
 
-        String name = args.getName();
-        String employeeID = args.getEmployeeID();
-        String employeeType = args.getEmployeeType();
-        String id = args.getId();
+        SharedPreferences sharedpreferences = requireContext().getSharedPreferences("query", Context.MODE_PRIVATE);
+        String employeeID = sharedpreferences.getString("query", "none");
 
-        Log.d("PayrollFragment", "Received: " + name + ", " + employeeID + ", " + employeeType + ", " + id);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference().child("database").child("employees");
+
+        ref.orderByChild("employeeID").equalTo(employeeID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    textName.setText(dataSnapshot.child("name").getValue(String.class));
+                    textEmployeeID.setText(dataSnapshot.child("employeeID").getValue(String.class));
+                    textEmployeeType.setText(dataSnapshot.child("employeeType").getValue(String.class));
+
+                    employmentType = dataSnapshot.child("employeeType").getValue(String.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        btnCompute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
+
 }

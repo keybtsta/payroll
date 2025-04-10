@@ -31,37 +31,12 @@
         <action
             android:id="@+id/action_payrollFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
-        <argument
-            android:name="name"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="employeeID"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="employeeType"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="id"
-            app:argType="string"
-            android:defaultValue='""' />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.pms_app.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
-    <activity
-        android:id="@+id/editActivity"
-        android:name="com.example.pms_app.EditActivity"
-        android:label="EditActivity" >
-
-        <action
-            android:id="@+id/action_employeesFragment_to_payrollFragment"
-            app:destination="@id/payrollFragment" />
-    </activity>
 
 
 </navigation>

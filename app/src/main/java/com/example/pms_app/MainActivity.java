@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     BottomAppBar bottomAppBar;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton fabAdd;
-
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,25 +48,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-            NavController navController = navHostFragment.getNavController();
+            navController = navHostFragment.getNavController();
             NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        if (intent.hasExtra("employeeName")) {
-
-
-            // Extract data
-            String employeeName = intent.getStringExtra("employeeName");
-            // Perform navigation using NavController
-            NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
-            navController.navigate(R.id.payrollFragment);  // Navigate as needed
-        }
+    public NavController getNavController() {
+        return navController;
     }
 
 }

@@ -5,14 +5,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.myViewHolder> {
-    public MainAdapter(@NonNull FirebaseRecyclerOptions<MainModel> options) {
+    private final ActivityResultLauncher<Intent> activityResultLauncher;
+    public MainAdapter(@NonNull FirebaseRecyclerOptions<MainModel> options, ActivityResultLauncher<Intent> activityResultLauncher) {
         super(options);
+
+        this.activityResultLauncher = activityResultLauncher;
     }
     @Override
     protected void onBindViewHolder(@NonNull MainAdapter.myViewHolder holder, int position, @NonNull MainModel model) {
@@ -30,10 +35,13 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel, MainAdapter.
                 intent.putExtra("employeeType", model.getEmployeeType());
                 intent.putExtra("id", getRef(holder.getBindingAdapterPosition()).getKey());
 
-                v.getContext().startActivity(intent);
+                activityResultLauncher.launch(intent);
+
             }
         });
     }
+
+
     @NonNull
     @Override
     public MainAdapter.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
